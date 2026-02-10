@@ -1,0 +1,63 @@
+# 敏感資料
+*.env
+.env.*
+secrets/
+credentials/
+
+# 資料檔案
+data/*.json
+data/*.csv
+data/*.pdf
+!data/.gitkeep
+
+# 日誌
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Next.js
+.next/
+out/
+build/
+dist/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+
+# Temp
+tmp/
+temp/
+*.tmp
+*.bak
+*.backup
+
+# 測試
+coverage/
+.nyc_output/
+
+# 本地配置（可能包含敏感資訊）
+config.local.json
+settings.local.json
