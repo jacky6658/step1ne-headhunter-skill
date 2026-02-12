@@ -77,7 +77,7 @@ generate_email() {
     read -r -d '' body << EOF || true
 ${contact_person}：
 
-我是 Step1ne 的招募顧問，專注於協助企業快速找到優秀的科技人才。
+我是 Step1ne 的招募顧問 "Jacky"，專注於協助企業快速找到優秀的科技人才。
 
 我們想與 ${client_name} 分享我們的服務如何協助企業提升招募效率：
 

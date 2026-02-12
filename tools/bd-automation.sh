@@ -52,38 +52,15 @@ search_companies() {
     # 訊息輸出到 stderr，檔案路徑輸出到 stdout
     echo -e "${BLUE}🔍 步驟 1/4：搜尋招聘「${keyword}」的公司...${NC}" >&2
     
-    # 使用 scraper-104.py
+    # 使用 scraper-104-v4.py（最新版，已修復反爬蟲問題）
     local output="$DATA_DIR/companies_$(date +%Y%m%d_%H%M%S).json"
     
-    # 優先使用 v2 版本（JavaScript eval 提取）
-    if [[ -f "$SCRIPT_DIR/../skills/headhunter/scripts/scraper-104-v2.py" ]]; then
-        # v2: 使用 JavaScript 提取，直接包含聯絡方式
-        echo -e "${BLUE}使用 v2 爬蟲（JavaScript eval + 自動爬取聯絡方式）${NC}" >&2
-        python3 "$SCRIPT_DIR/../skills/headhunter/scripts/scraper-104-v2.py" "$keyword" "$limit" > "$output"
-    elif [[ -f "$SCRIPT_DIR/../skills/headhunter/scripts/scraper-104.py" ]]; then
-        # v1: 舊版 accessibility tree 爬蟲
-        echo -e "${YELLOW}使用 v1 爬蟲（accessibility tree）${NC}" >&2
-        python3 "$SCRIPT_DIR/../skills/headhunter/scripts/scraper-104.py" "$keyword" "$limit" > "$output"
+    if [[ -f "$SCRIPT_DIR/../skills/headhunter/scripts/scraper-104-v4.py" ]]; then
+        echo -e "${GREEN}✅ 使用 v4 爬蟲（完整 snapshot 解析，已修復反爬蟲）${NC}" >&2
+        python3 "$SCRIPT_DIR/../skills/headhunter/scripts/scraper-104-v4.py" "$keyword" "$limit" > "$output"
     else
-        echo -e "${YELLOW}⚠️  找不到 scraper-104.py，使用模擬資料${NC}" >&2
-        cat > "$output" << 'EOF'
-[
-  {
-    "company": "ABC科技股份有限公司",
-    "job_title": "AI工程師",
-    "location": "台北市",
-    "salary": "80k-120k",
-    "url": "https://www.104.com.tw/job/xxxxx"
-  },
-  {
-    "company": "XYZ資訊有限公司",
-    "job_title": "AI工程師",
-    "location": "新北市",
-    "salary": "70k-110k",
-    "url": "https://www.104.com.tw/job/yyyyy"
-  }
-]
-EOF
+        echo -e "${RED}❌ 找不到 scraper-104-v4.py${NC}" >&2
+        return 1
     fi
     
     local count=$(cat "$output" | jq '. | length' 2>/dev/null || echo "0")

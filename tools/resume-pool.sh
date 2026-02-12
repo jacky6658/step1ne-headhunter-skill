@@ -16,17 +16,18 @@ shift
 
 case "$command" in
   add)
-    # 新增履歷: ./resume-pool.sh add "張三" "0912345678" "工程師" "Python,AI" "3" "碩士" "/path/to/resume.pdf"
+    # 新增履歷: ./resume-pool.sh add "張三" "0912345678" "工程師" "Python,AI" "3" "碩士" "顧問名稱" "/path/to/resume.pdf"
     name=$1
     contact=$2
     position=$3
     skills=$4
     experience=$5
     education=$6
-    file_path=$7
+    consultant=$7
+    file_path=$8
     
     if [ -z "$file_path" ]; then
-      echo "❌ 使用方式: add <姓名> <聯絡方式> <職位> <技能> <經驗年數> <學歷> <檔案路徑>"
+      echo "❌ 使用方式: add <姓名> <聯絡方式> <職位> <技能> <經驗年數> <學歷> <獵頭顧問> <檔案路徑>"
       exit 1
     fi
     
@@ -44,14 +45,17 @@ case "$command" in
     # 新增到 Google Sheets
     today=$(date +"%Y-%m-%d")
     echo "📝 新增到索引..."
-    gog sheets append "$SHEET_ID" "A:K" \
-      --values-json "[[\"\$name\",\"\$contact\",\"\$position\",\"\$skills\",\"\$experience\",\"\$education\",\"\$file_link\",\"待審核\",\"\",\"\$today\",\"\$today\"]]" \
+    gog sheets append "$SHEET_ID" "A:L" \
+      --values-json "[
+        [\"$name\",\"$contact\",\"$position\",\"$skills\",\"$experience\",\"$education\",\"$file_link\",\"待審核\",\"$consultant\",\"\",\"$today\",\"$today\"]
+      ]" \
       --insert INSERT_ROWS \
       --input USER_ENTERED \
       --account "$ACCOUNT" \
       --json
     
     echo "✅ 履歷已新增！檔案 ID: $file_id"
+    echo "👔 獵頭顧問: $consultant"
     echo "📊 查看索引: https://docs.google.com/spreadsheets/d/$SHEET_ID"
     ;;
     
@@ -96,11 +100,16 @@ case "$command" in
     echo "📁 移動履歷檔案..."
     gog drive move "$file_id" --parent "$target_folder" --account "$ACCOUNT" --json
     
-    # 更新 Google Sheets
+    # 更新 Google Sheets（只更新狀態和更新日期）
     today=$(date +"%Y-%m-%d")
     echo "📝 更新索引..."
-    gog sheets update "$SHEET_ID" "H$row:K$row" \
-      --values-json "[[\"$new_status\",\"\",\"\",\"$today\"]]" \
+    gog sheets update "$SHEET_ID" "H$row" \
+      --values-json "[[\"$new_status\"]]" \
+      --input USER_ENTERED \
+      --account "$ACCOUNT" \
+      --json
+    gog sheets update "$SHEET_ID" "L$row" \
+      --values-json "[[\"$today\"]]" \
       --input USER_ENTERED \
       --account "$ACCOUNT" \
       --json
@@ -111,7 +120,7 @@ case "$command" in
   list)
     # 列出所有履歷
     echo "📋 履歷池列表："
-    gog sheets get "$SHEET_ID" "A:K" --account "$ACCOUNT" --json | jq -r '.values[] | @tsv'
+    gog sheets get "$SHEET_ID" "A:L" --account "$ACCOUNT" --json | jq -r '.values[] | @tsv'
     ;;
     
   report)
@@ -119,7 +128,7 @@ case "$command" in
     echo "📊 履歷池統計報表"
     echo "===================="
     
-    all_data=$(gog sheets get "$SHEET_ID" "A:K" --account "$ACCOUNT" --json | jq -r '.values[1:]')
+    all_data=$(gog sheets get "$SHEET_ID" "A:L" --account "$ACCOUNT" --json | jq -r '.values[1:]')
     
     total=$(echo "$all_data" | jq 'length')
     pending=$(echo "$all_data" | jq '[.[] | select(.[7] == "待審核")] | length')
@@ -148,7 +157,7 @@ case "$command" in
     echo "  report    產生統計報表"
     echo ""
     echo "範例:"
-    echo "  ./resume-pool.sh add '張三' '0912345678' '工程師' 'Python,AI' '3' '碩士' '/path/to/resume.pdf'"
+    echo "  ./resume-pool.sh add '張三' '0912345678' '工程師' 'Python,AI' '3' '碩士' 'Jacky' '/path/to/resume.pdf'"
     echo "  ./resume-pool.sh search 'Python'"
     echo "  ./resume-pool.sh status 2 '已面試'"
     echo "  ./resume-pool.sh list"
