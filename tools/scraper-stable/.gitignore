@@ -1,0 +1,5 @@
+config.json
+progress.json
+scraper.log
+*.pyc
+__pycache__/
