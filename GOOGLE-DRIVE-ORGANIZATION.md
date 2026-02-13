@@ -172,3 +172,25 @@ aijessie88@step1ne.com   gmail,calendar,drive,docs,sheets...
 
 **最後更新**：2026-02-13 12:25 GMT+8  
 **維護者**：YuQi (OpenClaw AI Assistant)
+
+---
+
+## 📝 更新記錄（2026-02-13 12:30）
+
+### aiagent 履歷資料夾移動
+- ✅ 將「aiagent」資料夾移動到「獵頭系統」下
+- 📁 **內容**：691+ 個履歷 PDF 檔案
+- 🔗 **連結**：https://drive.google.com/drive/folders/1JkesbUFyGz51y90NWUG91n84umU33Mc5
+- **用途**：所有候選人履歷 PDF 統一存放位置
+
+### 最終資料夾結構
+```
+openclaw 龍蝦工作室/
+└── 獵頭系統/
+    ├── 履歷池索引 (Google Sheets)
+    ├── step1ne 職缺管理 (Google Sheets)
+    ├── BD客戶開發表 (Google Sheets)
+    ├── Pipeline追蹤 - Jacky (Google Sheets)
+    ├── Pipeline追蹤 - Phoebe (Google Sheets)
+    └── aiagent/ ← 履歷 PDF 存放（691+ 個檔案）
+```
