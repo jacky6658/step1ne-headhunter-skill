@@ -143,12 +143,20 @@ bash tools/jd-manager.sh search "工程師"
 
 ## ⚙️ 系統需求
 
+### 後端 / 爬蟲 / 自動化工具
 - Python 3.8+
 - gog CLI（Google Sheets 操作）
 - agent-browser（網頁自動化）
 - OpenClaw（可選，用於整合）
 
 安裝指南：[docs/INSTALL.md](docs/INSTALL.md)
+
+### 前端系統（AI 配對、看板、PDF 匯出）
+- Node.js 18+
+- React 18+
+- **jsPDF + jspdf-autotable**（PDF 生成）⭐ **重要！**
+
+完整前端依賴清單：[docs/FRONTEND-DEPENDENCIES.md](docs/FRONTEND-DEPENDENCIES.md)
 
 ---
 
