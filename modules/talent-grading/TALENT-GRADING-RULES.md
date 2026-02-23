@@ -571,11 +571,11 @@ function calculateTalentGrade(candidate) {
 }
 
 function getTalentGrade(score) {
-  if (score >= 90) return 'S';   // 頂尖人才（90-100分）
-  if (score >= 80) return 'A+';  // 優秀人才（80-89分）
-  if (score >= 70) return 'A';   // 合格人才（70-79分）
-  if (score >= 60) return 'B';   // 潛力人才（60-69分）
-  return 'C';                     // 需培訓（<60分）
+  if (score >= 90) return 'S';   // 頂尖人才（稀缺）（90-100分）
+  if (score >= 80) return 'A+';  // 優秀人才（強力推薦）（80-89分）
+  if (score >= 70) return 'A';   // 合格人才（可推薦）（70-79分）
+  if (score >= 60) return 'B';   // 基本合格（需評估）（60-69分）
+  return 'C';                     // 需補強（謹慎推薦）（<60分）
 }
 ```
 
