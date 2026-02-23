@@ -1,0 +1,53 @@
+{
+  "name": "王頂尖",
+  "email": "top@example.com",
+  "phone": "0911-222-333",
+  "position": "Staff Engineer / Tech Lead",
+  "education": [
+    {
+      "degree": "博士",
+      "school": "Stanford University",
+      "major": "Computer Science",
+      "start": "2010-09",
+      "end": "2015-06"
+    },
+    {
+      "degree": "碩士",
+      "school": "國立台灣大學",
+      "major": "資訊工程學系",
+      "start": "2008-09",
+      "end": "2010-06"
+    }
+  ],
+  "work_history": [
+    {
+      "company": "Google",
+      "position": "Staff Software Engineer",
+      "start": "2020-01",
+      "end": "現在",
+      "duration": 60,
+      "current": true
+    },
+    {
+      "company": "Meta",
+      "position": "Senior Software Engineer",
+      "start": "2017-07",
+      "end": "2019-12",
+      "duration": 30
+    },
+    {
+      "company": "Microsoft",
+      "position": "Software Engineer",
+      "start": "2015-07",
+      "end": "2017-06",
+      "duration": 24
+    }
+  ],
+  "total_years": 11.5,
+  "job_changes": 3,
+  "skills": "C++, Python, Go, Rust, JavaScript, TypeScript, React, Kubernetes, Docker, TensorFlow, PyTorch, AWS, GCP, Azure, System Design, Distributed Systems, Machine Learning, Deep Learning",
+  "stability": 88,
+  "github_url": "https://github.com/top-talent",
+  "linkedin_url": "https://linkedin.com/in/top-talent",
+  "languages": ["中文", "英文", "日文"]
+}

@@ -1,0 +1,46 @@
+{
+  "name": "李大華",
+  "email": "senior@example.com",
+  "phone": "0987-654-321",
+  "position": "Senior Full Stack Engineer",
+  "education": [
+    {
+      "degree": "學士",
+      "school": "國立交通大學",
+      "major": "資訊工程學系",
+      "start": "2012-09",
+      "end": "2016-06"
+    }
+  ],
+  "work_history": [
+    {
+      "company": "某科技公司",
+      "position": "Senior Full Stack Engineer",
+      "start": "2020-03",
+      "end": "現在",
+      "duration": 58,
+      "current": true
+    },
+    {
+      "company": "新創公司",
+      "position": "Full Stack Engineer",
+      "start": "2018-07",
+      "end": "2020-02",
+      "duration": 20
+    },
+    {
+      "company": "軟體公司",
+      "position": "Junior Developer",
+      "start": "2016-07",
+      "end": "2018-06",
+      "duration": 24
+    }
+  ],
+  "total_years": 8.5,
+  "job_changes": 3,
+  "skills": "Python, JavaScript, TypeScript, React, Vue.js, Node.js, Django, Flask, PostgreSQL, MongoDB, Redis, Docker, Kubernetes, AWS, GCP",
+  "stability": 75,
+  "github_url": "https://github.com/senior-dev",
+  "linkedin_url": "https://linkedin.com/in/senior-dev",
+  "languages": ["中文", "英文"]
+}
