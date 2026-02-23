@@ -1,0 +1,90 @@
+{
+  "AI工程師": {
+    "primary": ["AI Engineer", "Machine Learning Engineer", "ML Engineer"],
+    "skills": ["Python", "TensorFlow", "PyTorch", "Scikit-learn", "Keras"],
+    "synonyms": ["Data Scientist", "Deep Learning Engineer", "ML Researcher"],
+    "required_skills_count": 2,
+    "preferred_location": ["Taiwan", "Taipei"],
+    "technical_job": true
+  },
+  "後端工程師": {
+    "primary": ["Backend Engineer", "Backend Developer", "Server Engineer"],
+    "skills": ["Go", "Python", "Java", "Node.js", "PostgreSQL", "Redis"],
+    "synonyms": ["API Developer", "Backend Architect", "Server Developer"],
+    "required_skills_count": 2,
+    "preferred_location": ["Taiwan", "Taipei"],
+    "technical_job": true
+  },
+  "前端工程師": {
+    "primary": ["Frontend Engineer", "Frontend Developer", "UI Engineer"],
+    "skills": ["React", "TypeScript", "Vue", "Angular", "JavaScript", "CSS"],
+    "synonyms": ["Front-end Developer", "UI Developer", "Web Developer"],
+    "required_skills_count": 2,
+    "preferred_location": ["Taiwan", "Taipei"],
+    "technical_job": true
+  },
+  "全端工程師": {
+    "primary": ["Full Stack Engineer", "Full Stack Developer"],
+    "skills": ["React", "Node.js", "TypeScript", "PostgreSQL", "Docker"],
+    "synonyms": ["Fullstack Engineer", "Full-Stack Developer"],
+    "required_skills_count": 3,
+    "preferred_location": ["Taiwan", "Taipei"],
+    "technical_job": true
+  },
+  "DevOps工程師": {
+    "primary": ["DevOps Engineer", "SRE", "Site Reliability Engineer"],
+    "skills": ["Kubernetes", "Docker", "AWS", "GCP", "Terraform", "CI/CD"],
+    "synonyms": ["Cloud Engineer", "Infrastructure Engineer", "Platform Engineer"],
+    "required_skills_count": 2,
+    "preferred_location": ["Taiwan", "Taipei"],
+    "technical_job": true
+  },
+  "雲端維運工程師": {
+    "primary": ["Cloud Engineer", "Cloud Operations Engineer", "SRE"],
+    "skills": ["AWS", "GCP", "Azure", "Kubernetes", "Linux", "Shell"],
+    "synonyms": ["Cloud Infrastructure Engineer", "DevOps Engineer"],
+    "required_skills_count": 2,
+    "preferred_location": ["Taiwan", "Taipei"],
+    "technical_job": true
+  },
+  "資安工程師": {
+    "primary": ["Security Engineer", "Cybersecurity Engineer", "InfoSec Engineer"],
+    "skills": ["Security", "Penetration Testing", "SIEM", "Firewall", "DevSecOps"],
+    "synonyms": ["Information Security Engineer", "Security Analyst"],
+    "required_skills_count": 2,
+    "preferred_location": ["Taiwan", "Taipei"],
+    "technical_job": true
+  },
+  "數據分析師": {
+    "primary": ["Data Analyst", "Business Analyst", "Analytics Engineer"],
+    "skills": ["SQL", "Python", "Tableau", "Power BI", "Excel"],
+    "synonyms": ["BI Analyst", "Data Analytics", "Business Intelligence"],
+    "required_skills_count": 2,
+    "preferred_location": ["Taiwan", "Taipei"],
+    "technical_job": true
+  },
+  "專案經理": {
+    "primary": ["Project Manager", "PM", "Product Manager"],
+    "skills": ["Agile", "Scrum", "Jira", "Project Management"],
+    "synonyms": ["Product Owner", "Program Manager", "Delivery Manager"],
+    "required_skills_count": 1,
+    "preferred_location": ["Taiwan", "Taipei"],
+    "technical_job": false
+  },
+  "UI/UX設計師": {
+    "primary": ["UI Designer", "UX Designer", "UI/UX Designer"],
+    "skills": ["Figma", "Adobe XD", "Sketch", "User Research", "Prototyping"],
+    "synonyms": ["Product Designer", "Interaction Designer", "Visual Designer"],
+    "required_skills_count": 2,
+    "preferred_location": ["Taiwan", "Taipei"],
+    "technical_job": false
+  },
+  "HR招募專員": {
+    "primary": ["HR Recruiter", "Talent Acquisition", "Recruitment Specialist"],
+    "skills": ["Recruitment", "HR", "Talent Sourcing", "Interviewing"],
+    "synonyms": ["Recruitment Consultant", "HR Specialist", "Talent Partner"],
+    "required_skills_count": 1,
+    "preferred_location": ["Taiwan", "Taipei"],
+    "technical_job": false
+  }
+}

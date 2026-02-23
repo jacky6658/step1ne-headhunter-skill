@@ -1,0 +1,79 @@
+{
+  "sourcing": {
+    "linkedin": {
+      "enabled": true,
+      "limit": 15,
+      "location": "Taiwan",
+      "timeout": 30
+    },
+    "github": {
+      "enabled": true,
+      "limit": 10,
+      "location": "Taiwan",
+      "token_required": true
+    },
+    "resume_pool": {
+      "enabled": false,
+      "comment": "2026-02-28 後啟用內部履歷池搜尋"
+    }
+  },
+  "ai_matcher": {
+    "enabled": true,
+    "min_score_threshold": 50,
+    "weights": {
+      "skills": 0.40,
+      "experience": 0.30,
+      "stability": 0.20,
+      "education": 0.10
+    },
+    "grade_thresholds": {
+      "P0": 90,
+      "P1": 70,
+      "P2": 50
+    }
+  },
+  "deduplication": {
+    "enabled": true,
+    "match_fields": ["email", "phone", "github_url", "linkedin_url"],
+    "fuzzy_match": {
+      "name_similarity_threshold": 0.85,
+      "company_match": true
+    }
+  },
+  "notification": {
+    "telegram": {
+      "enabled": true,
+      "chat_id": "-1003231629634",
+      "thread_id": 304,
+      "include_top_n": 3,
+      "include_daily_summary": true
+    },
+    "email": {
+      "enabled": false,
+      "recipients": ["jacky@example.com"]
+    }
+  },
+  "google_sheets": {
+    "resume_pool": {
+      "sheet_id": "1PunpaDAFBPBL_I76AiRYGXKaXDZvMl1c262SEtxRk6Q",
+      "tab_name": "履歷池v2",
+      "gid": 142613837
+    },
+    "job_management": {
+      "sheet_id": "1QPaeOm-slNVFCeM8Q3gg3DawKjzp2tYwyfquvdHlZFE",
+      "tab_name": "step1ne 職缺管理"
+    }
+  },
+  "logging": {
+    "enabled": true,
+    "log_dir": "/tmp",
+    "log_file_pattern": "sourcing-bot-{date}.log",
+    "retention_days": 7
+  },
+  "performance": {
+    "max_execution_time": 600,
+    "retry_on_failure": true,
+    "max_retries": 3,
+    "backoff_seconds": 5
+  }
+}

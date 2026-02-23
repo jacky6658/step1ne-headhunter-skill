@@ -1,0 +1,79 @@
+# Sourcing Bot Cron 設定範例
+
+## 基本設定（每天 3 次）
+
+### Cron 1: 早上 09:00
+openclaw cron add \
+  --label "履歷池自動累積-早上" \
+  --schedule "0 9 * * *" \
+  --command "bash /Users/user/clawd/projects/step1ne-headhunter-skill/bots/sourcing-bot/workflows/auto-sourcing.sh"
+
+### Cron 2: 下午 14:00
+openclaw cron add \
+  --label "履歷池自動累積-下午" \
+  --schedule "0 14 * * *" \
+  --command "bash /Users/user/clawd/projects/step1ne-headhunter-skill/bots/sourcing-bot/workflows/auto-sourcing.sh"
+
+### Cron 3: 晚上 20:00
+openclaw cron add \
+  --label "履歷池自動累積-晚上" \
+  --schedule "0 20 * * *" \
+  --command "bash /Users/user/clawd/projects/step1ne-headhunter-skill/bots/sourcing-bot/workflows/auto-sourcing.sh"
+
+---
+
+## 進階設定
+
+### 只搜尋特定職缺
+openclaw cron add \
+  --label "AI工程師每日搜尋" \
+  --schedule "0 10 * * *" \
+  --command "bash /Users/user/clawd/projects/step1ne-headhunter-skill/bots/sourcing-bot/workflows/auto-sourcing.sh --job 'AI工程師'"
+
+### 測試模式（每小時執行一次，只處理 1 個職缺）
+openclaw cron add \
+  --label "Sourcing Bot 測試" \
+  --schedule "0 * * * *" \
+  --command "bash /Users/user/clawd/projects/step1ne-headhunter-skill/bots/sourcing-bot/workflows/auto-sourcing.sh --test"
+
+### Dry Run 模式（不實際匯入履歷池）
+openclaw cron add \
+  --label "Sourcing Bot Dry Run" \
+  --schedule "0 12 * * *" \
+  --command "bash /Users/user/clawd/projects/step1ne-headhunter-skill/bots/sourcing-bot/workflows/auto-sourcing.sh --dry-run"
+
+---
+
+## 管理指令
+
+### 查看所有 Sourcing Bot Cron
+openclaw cron list | grep "履歷池自動累積"
+
+### 手動執行 Cron
+openclaw cron run <CRON_ID>
+
+### 查看 Cron 日誌
+openclaw cron logs <CRON_ID> --limit 10
+
+### 暫停 Cron
+openclaw cron pause <CRON_ID>
+
+### 恢復 Cron
+openclaw cron resume <CRON_ID>
+
+### 刪除 Cron
+openclaw cron delete <CRON_ID>
+
+---
+
+## Cron 排程語法參考
+
+格式：分 時 日 月 星期
+
+範例：
+- "0 9 * * *"       → 每天 09:00
+- "0 */2 * * *"     → 每 2 小時
+- "0 9 * * 1"       → 每週一 09:00
+- "0 9 1 * *"       → 每月 1 號 09:00
+- "0 9 * * 1-5"     → 週一到週五 09:00
+- "0 9,14,20 * * *" → 每天 09:00, 14:00, 20:00

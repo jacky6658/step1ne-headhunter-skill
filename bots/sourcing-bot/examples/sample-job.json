@@ -1,0 +1,23 @@
+{
+  "job_title": "AI工程師",
+  "department": "技術部",
+  "required_skills": [
+    "Python",
+    "TensorFlow",
+    "PyTorch",
+    "Docker"
+  ],
+  "preferred_skills": [
+    "Kubernetes",
+    "AWS",
+    "MLOps"
+  ],
+  "min_years_experience": 3,
+  "education_requirement": "學士以上",
+  "salary_range": "80k-120k",
+  "location": "台北市",
+  "status": "招募中",
+  "priority": "高",
+  "hiring_manager": "Jacky",
+  "job_description": "負責 AI 模型開發、訓練與部署，與產品團隊協作實現 AI 功能。"
+}
