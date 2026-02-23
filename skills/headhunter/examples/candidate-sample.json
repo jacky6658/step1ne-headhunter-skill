@@ -1,0 +1,76 @@
+{
+  "id": 1,
+  "birthYear": 1992,
+  "languageSkills": "Chinese: Native speaker，English: IELTS 5.0",
+  "maritalStatus": "Single",
+  "nationality": "Taiwan Citizen",
+  "residence": "Taipei City",
+  "education": "東南科技大學 / 工業工程與管理系 / 2013/6",
+  "summary": "遊戲產業 PM 經驗 2+ 年，目前負責撲克 APP 產品規劃\n⦿ 熟悉產品從 0-1 完整流程，曾獨立交付 9-10 個包網平台專案\n⦿ 產品規劃能力強：擅長競品分析、功能設計、PRD 撰寫\n⦿ 跨部門協作經驗豐富：與 RD、美術、動畫團隊密切合作\n⦿ 技術理解能力佳：熟悉 API 串接、上架流程（Apple/Google）\n⦿ 團隊管理經驗：曾管理 RD/PM/QA 團隊，能有效分配工作優先順序\n⦿ 執行力強，條理分明，能將產品需求轉化為可執行的規格文件\n⦿ 了解遊戲產業趨勢，對撲克類遊戲有深入研究（大廳、俱樂部、桌檯功能架構）",
+  "skills": "專案管理工具：Jira、Confluence\n應用撰寫規劃書與產品規格文件（PRD）\n執行專案與控管時程\n跨部門溝通與協調\n原型設計工具：Mockflowe、Axure\n使用者流程設計（Wireframe）\n辦公室應用：Excel、Outlook、PowerPoint、Word\nChatGPT、Google Workspace",
+  "workHistory": [
+    {
+      "company": "遊戲橘子",
+      "industry": "網路服務業",
+      "size": "30-100人",
+      "startDate": "2025年10月",
+      "endDate": "現在",
+      "title": "PM（專案經理）",
+      "duties": [
+        "負責撲克 APP 產品規劃（含 X-Poker、GGClub 等產品研究）",
+        "規劃功能設計：大廳功能、桌檯功能、俱樂部系統",
+        "撰寫產品規格文件（PRD）：詳細玩法規則、功能需求、操作流程",
+        "規劃動畫觸發系統（Loading 畫面、互動動畫）",
+        "跨部門協作（RD / 美術 / 動畫），確保開發可行性"
+      ],
+      "achievements": [
+        "完成 X-Poker APP 完整產品規劃（大廳、俱樂部、桌檯三大模組）"
+      ],
+      "leaveReason": "仍在職（尋求更好的發展機會）"
+    },
+    {
+      "company": "某新創科技公司",
+      "industry": "網路相關",
+      "size": "30-100人",
+      "startDate": "2024年11月",
+      "endDate": "2025年9月",
+      "title": "主管特別助理 / PM 專案經理",
+      "duties": [
+        "協助產品經理處理 H5 遊戲開發流程圖",
+        "依照產品需求溝通開發規格",
+        "負責開發功能排程管理"
+      ],
+      "achievements": [],
+      "leaveReason": "尋求更專業的 PM 職位"
+    },
+    {
+      "company": "某網路服務公司",
+      "industry": "網路相關",
+      "size": "30-100人",
+      "startDate": "2023年11月",
+      "endDate": "2024年11月",
+      "title": "CTO 助理 / PM 專案經理",
+      "duties": [
+        "專案管理：依照產品規格書規劃開發順序、追蹤進度",
+        "開發協調：依照產品需求規格書溝通開發需求、API 串接",
+        "團隊管理：負責 RD/PM/QA 團隊管理，分配工作優先順序",
+        "Apple / Google 上架管理"
+      ],
+      "achievements": [
+        "管理 RD/PM/QA 團隊，確保專案如期交付"
+      ],
+      "leaveReason": "公司組織調整"
+    }
+  ],
+  "certifications": "無",
+  "otherInfo": "無",
+  "previousSalary": "年薪約 100 萬（月薪 80-90K）",
+  "currentSalary": "年薪約 72 萬（轉職過渡期）",
+  "expectedSalary": "月薪 7.5 萬 up，年薪 120~150 萬",
+  "salaryNote": "候選人因轉職至遊戲產業累積相關經驗（撲克 APP 產品規劃），短期內接受較低薪資，現尋求回歸正常薪資水平。",
+  "onBoardDate": "One month notice period",
+  "recommendationReason": "此候選人目前在遊戲公司擔任 PM，負責撲克 APP 產品規劃，與貴司產品類型高度相關，可立即上手。\n\n核心優勢：\n• 產品經驗直接相關（熟悉撲克 APP 架構）\n• Product Manager 定位明確（PRD 撰寫、競品分析）\n• 跨部門協作能力強\n• 產品從 0-1 經驗\n• 技術理解能力佳",
+  "matchAnalysis": "✅ Product Manager 經驗（目前職位）\n✅ 遊戲產業經驗（撲克 APP）\n✅ 撰寫 PRD（產品規格文件）\n✅ 跨部門協作能力\n✅ 10+ 年工作經驗",
+  "suggestions": "候選人希望先了解詳細工作內容和產品方向。\n薪資部分待確認貴司預算範圍後再與候選人溝通。",
+  "currentJobTitle": "Product Manager"
+}
