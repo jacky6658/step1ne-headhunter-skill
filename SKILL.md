@@ -13,6 +13,38 @@
 
 ---
 
+## 🧠 模組化架構（2026-02-23 更新）
+
+本技能包採用**模組化架構**，分為三大層級：
+
+### 📦 核心模組（modules/）
+可獨立使用的 AI 智慧模組：
+- **talent-grading** - 人才評級系統（S/A+/A/B/C）
+- **ai-matcher** - AI 配對系統（P0/P1/P2）
+- **resume-parser** - 履歷解析與自動歸檔
+- **dedup-engine** - 候選人去重引擎
+- **learning-engine** - AI 學習系統
+- **github-talent-search** - GitHub 人才搜尋
+- **linkedin-search** - LinkedIn 爬蟲
+- **multi-channel-sourcing** - 多管道整合搜尋
+
+### 📚 訓練文檔（training/）
+給新顧問與 AI Bot 的學習資源：
+- **PHOEBE-AI-GUIDE.md** - 新顧問訓練指南
+- **HEADHUNTER-AI-MODULES.md** - 模組化學習機制
+- **ai-collaboration-101.md** - AI 協作基礎（待建立）
+- **grading-practice.md** - 評級實戰練習（待建立）
+- **search-strategy.md** - 搜尋策略最佳實踐（待建立）
+
+### ⚙️ 自動化流程（workflows/）
+端到端的業務流程：
+- **auto-collect-candidates.sh** - 自動搜尋候選人
+- **auto-bd-send.sh** - 自動發送 BD 信
+
+詳細說明請參考各資料夾的 `README.md`。
+
+---
+
 ## 🚀 快速開始
 
 ### 1. 安裝工具
