@@ -41,6 +41,31 @@ python3 ~/clawd/skills/headhunter/scripts/dashboard.py
 python3 ~/clawd/skills/headhunter/scripts/auto-followup.py demo
 ```
 
+## ⚠️ 履歷匯入標準（強制執行）
+
+**所有 AI Bot 匯入履歷必須遵守統一流程！**
+
+### 快速匯入
+
+```bash
+# 1. 準備候選人 JSON 檔案（見 examples/liao-chiahsien.json）
+# 2. 執行匯入腳本
+./scripts/import-resume-to-pool.sh examples/liao-chiahsien.json
+```
+
+### 詳細文檔
+
+📖 **完整說明**：[docs/RESUME-IMPORT-STANDARD.md](docs/RESUME-IMPORT-STANDARD.md)
+
+**重點規則**：
+- ✅ 20 個欄位固定順序
+- ✅ 使用 `|` 分隔符號
+- ✅ 使用 `update` 而非 `append`
+- ✅ 簡化 JSON 欄位（純文字描述）
+- ✅ 匯入後自動驗證
+
+---
+
 ## 功能列表
 
 | 功能 | 說明 | 觸發詞 |
@@ -48,6 +73,7 @@ python3 ~/clawd/skills/headhunter/scripts/auto-followup.py demo
 | 人才畫像 | 分析 JD 產出人選特徵 | 「人才畫像」「分析 JD」 |
 | 搜尋策略 | Boolean String + 管道建議 | 「搜尋策略」「找人」 |
 | 履歷匹配 | 履歷 vs JD 匹配分析 | 「匹配度」「分析履歷」 |
+| **履歷匯入** | **標準化履歷池匯入** | **./scripts/import-resume-to-pool.sh** |
 | 開發信 | 撰寫候選人開發信 | 「開發信」「InMail」 |
 | 面試問題 | 生成面試問題 | 「面試問題」 |
 | JD 生成 | 撰寫職位說明 | 「寫 JD」 |
