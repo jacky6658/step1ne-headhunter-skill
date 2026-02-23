@@ -65,12 +65,12 @@ echo "  • 評級結果: $GRADE_JSON"
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
-# 3. 可選：發送 Telegram 通知
-if [ ! -z "$TELEGRAM_CHAT_ID" ]; then
+# 3. 發送 Telegram 私訊（給主人，不發群組）
+if [ ! -z "$OWNER_TELEGRAM" ]; then
   echo ""
-  echo "📱 發送 Telegram 通知..."
+  echo "📱 私訊主人: $OWNER_TELEGRAM"
   
-  MESSAGE="📋 新履歷進件
+  MESSAGE="📋 履歷分析完成
 
 👤 姓名: $(jq -r '.name' "$PARSED_JSON")
 💼 職位: $(jq -r '.position' "$PARSED_JSON")
@@ -82,8 +82,28 @@ if [ ! -z "$TELEGRAM_CHAT_ID" ]; then
 📊 評分明細:
 $(jq -r '.breakdown | to_entries[] | "• \(.key): \(.value)"' "$GRADE_JSON")
 
-⏰ 時間: $(date '+%Y-%m-%d %H:%M:%S')"
+📂 履歷檔案: $(basename "$RESUME_FILE")
+⏰ 時間: $(date '+%Y-%m-%d %H:%M:%S')
 
-  # 使用 OpenClaw message tool 或 curl Telegram API
-  # openclaw message send --channel telegram --to "$TELEGRAM_CHAT_ID" --message "$MESSAGE"
+---
+查看完整資訊: https://step1ne.zeabur.app"
+
+  # 使用 OpenClaw message tool 私訊主人
+  # 不要發到群組（-1003231629634），直接發給主人的 username
+  echo "$MESSAGE" > /tmp/resume_notification.txt
+  
+  # 方式 A: 使用 openclaw message (推薦)
+  # openclaw message send --channel telegram --to "$OWNER_TELEGRAM" --message "$MESSAGE"
+  
+  # 方式 B: 使用 curl (需要 Telegram Bot Token)
+  # TELEGRAM_BOT_TOKEN="your_bot_token"
+  # curl -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \
+  #   -d "chat_id=$OWNER_TELEGRAM" \
+  #   -d "text=$MESSAGE"
+  
+  echo "✅ 私訊已發送給 $OWNER_TELEGRAM"
+else
+  echo ""
+  echo "⚠️  未設定 OWNER_TELEGRAM 環境變數，跳過私訊通知"
+  echo "💡 設定方式: export OWNER_TELEGRAM=\"@username\" 或 \"USER_ID\""
 fi
