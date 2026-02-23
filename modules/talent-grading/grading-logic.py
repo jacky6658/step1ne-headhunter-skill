@@ -30,36 +30,36 @@ class TalentGrader:
     
     def calculate_education_score(self, education: List[Dict]) -> float:
         """
-        計算學歷分數 (20%)
+        計算學歷分數 (10%) - 方案 A
         
         Args:
             education: 教育背景陣列
             
         Returns:
-            0-20 分
+            0-10 分
         """
         if not education:
-            return 8  # 無學歷資料給基礎分
+            return 5  # 無學歷資料給基礎分
         
-        # 取最高學歷
+        # 取最高學歷（分數範圍調整為 0-10）
         degrees = {
-            '博士': 20,
-            'PhD': 20,
-            'Ph.D.': 20,
-            'Doctor': 20,
-            '碩士': 18,
-            'Master': 18,
-            'MBA': 18,
-            '學士': 15,
-            'Bachelor': 15,
-            '大學': 15,
-            '專科': 10,
-            'Associate': 10,
-            '高中': 8,
-            'High School': 8
+            '博士': 10,
+            'PhD': 10,
+            'Ph.D.': 10,
+            'Doctor': 10,
+            '碩士': 9,
+            'Master': 9,
+            'MBA': 9,
+            '學士': 7.5,
+            'Bachelor': 7.5,
+            '大學': 7.5,
+            '專科': 6,
+            'Associate': 6,
+            '高中': 5,
+            'High School': 5
         }
         
-        max_score = 8  # 預設分數
+        max_score = 5  # 預設分數
         
         for edu in education:
             degree = edu.get('degree', '')
@@ -78,60 +78,71 @@ class TalentGrader:
             school = edu.get('school', '')
             for prestigious in prestigious_schools:
                 if prestigious in school:
-                    max_score = min(max_score + 2, 20)  # 名校加 2 分，上限 20
+                    max_score = min(max_score + 1, 10)  # 名校加 1 分，上限 10
                     break
         
         return max_score
     
     def calculate_experience_score(self, total_years: float) -> float:
         """
-        計算工作年資分數 (20%)
+        計算工作年資分數 (15%) - 方案 A
         
         Args:
             total_years: 總工作年資
             
         Returns:
-            0-20 分
+            0-15 分
         """
         if total_years >= 10:
-            return 20
-        elif total_years >= 7:
-            return 18
-        elif total_years >= 5:
             return 15
+        elif total_years >= 7:
+            return 12.5
+        elif total_years >= 5:
+            return 11
         elif total_years >= 3:
-            return 12
+            return 9
         elif total_years >= 1:
-            return 10
+            return 6
         elif total_years >= 0.5:
-            return 8  # 半年以上
+            return 4  # 半年以上
         else:
-            return 5  # 社會新鮮人
+            return 3.5  # 社會新鮮人
     
     def calculate_skills_score(self, skills: List[str]) -> float:
         """
-        計算技能廣度分數 (20%)
+        計算技能匹配度分數 (25%) - 方案 A
+        技能數量 + 深度關鍵字 + 認證
         
         Args:
             skills: 技能列表
             
         Returns:
-            0-20 分
+            0-25 分
         """
+        if not skills:
+            return 5  # 無技能資料
+        
         skill_count = len(skills)
         
-        if skill_count >= 10:
-            return 20
-        elif skill_count >= 7:
-            return 18
-        elif skill_count >= 5:
-            return 15
-        elif skill_count >= 3:
-            return 12
-        elif skill_count >= 1:
-            return 10
-        else:
-            return 5  # 無技能資料
+        # 基礎分：技能數量（每個 1.5 分，上限 15 分）
+        base_score = min(skill_count * 1.5, 15)
+        
+        # 深度關鍵字加分（+5 分）
+        advanced_keywords = [
+            'architect', '架構', 'lead', 'senior', '資深',
+            'expert', '專家', 'advanced', '進階'
+        ]
+        skills_text = ' '.join(skills).lower()
+        has_advanced = any(kw in skills_text for kw in advanced_keywords)
+        advanced_bonus = 5 if has_advanced else 0
+        
+        # 認證加分（+5 分）
+        cert_keywords = ['aws', 'gcp', 'azure', 'pmp', 'cissp', '證照', 'certified', 'certification']
+        has_cert = any(kw in skills_text for kw in cert_keywords)
+        cert_bonus = 5 if has_cert else 0
+        
+        total = base_score + advanced_bonus + cert_bonus
+        return min(total, 25)  # 上限 25 分
     
     def calculate_stability_score(self, stability: int) -> float:
         """
@@ -160,59 +171,81 @@ class TalentGrader:
     
     def calculate_career_trajectory_score(self, work_history: List[Dict]) -> float:
         """
-        計算職涯發展軌跡分數 (10%)
+        計算職涯發展軌跡分數 (25%) - 方案 A
+        晉升記錄 + 職位層級變化
         
         Args:
             work_history: 工作經歷陣列
             
         Returns:
-            0-10 分
+            0-25 分
         """
         if not work_history or len(work_history) < 2:
-            return 7  # 單一工作或無資料給中間分
+            return 12.5  # 單一工作或無資料給一半分
         
         # 分析職位變化
         positions = [job.get('position', '') for job in work_history]
         
-        # 晉升關鍵字
-        promotion_keywords = {
-            'senior': 2,
-            '資深': 2,
-            'lead': 2,
-            '主管': 2,
-            'manager': 3,
-            '經理': 3,
-            'director': 4,
-            '總監': 4,
-            'VP': 5,
-            'CTO': 5,
-            'CEO': 5
+        # 職位層級對應表（擴充版本）
+        level_keywords = {
+            'CEO': 10, 'CTO': 10, 'CFO': 10, 'COO': 10,
+            '執行長': 10, '技術長': 10, '財務長': 10, '營運長': 10,
+            '總經理': 9, 'VP': 9, '副總': 9, 'Vice President': 9,
+            '協理': 8, '總監': 8, 'Director': 8,
+            '經理': 7, 'Manager': 7, '部門主管': 7,
+            '副理': 6, '組長': 6, 'Team Lead': 6, 'Lead': 6,
+            '資深': 6, 'Senior': 6, '主管': 6,
+            '工程師': 5, 'Engineer': 5, '專員': 5, '開發': 5,
+            'Junior': 4, '初級': 4,
+            '助理': 3, 'Assistant': 3,
+            '實習': 2, 'Intern': 2
         }
         
-        # 計算職位等級變化
-        scores = []
-        for pos in positions:
-            pos_score = 0
-            for keyword, score in promotion_keywords.items():
-                if keyword.lower() in pos.lower():
-                    pos_score = max(pos_score, score)
-            scores.append(pos_score)
+        # 計算每個職位的等級
+        def get_level(position):
+            pos_lower = position.lower()
+            for keyword, level in sorted(level_keywords.items(), key=lambda x: -len(x[0])):
+                if keyword.lower() in pos_lower:
+                    return level
+            return 5  # 預設等級
         
-        if len(scores) >= 2:
-            # 持續晉升
-            if all(scores[i] <= scores[i+1] for i in range(len(scores)-1)):
-                return 10
-            # 有晉升但不連續
-            elif scores[-1] > scores[0]:
-                return 8
-            # 平行發展
-            elif scores[-1] == scores[0]:
-                return 7
-            # 向下發展
+        levels = [get_level(pos) for pos in positions]
+        
+        # 分析晉升軌跡
+        score = 0
+        promotions = 0
+        lateral = 0
+        demotions = 0
+        
+        for i in range(len(levels) - 1):
+            diff = levels[i] - levels[i+1]  # 反向（最新 - 較舊）
+            
+            if diff >= 3:
+                promotions += 1
+                score += 25  # 跨級晉升
+            elif diff == 2:
+                promotions += 1
+                score += 20  # 明顯晉升
+            elif diff == 1:
+                promotions += 1
+                score += 15  # 小幅晉升
+            elif diff == 0:
+                lateral += 1
+                score += 10  # 平級
+            elif diff == -1:
+                demotions += 1
+                score += 5  # 小幅降級
             else:
-                return 5
+                demotions += 1
+                score += 0  # 明顯降級
         
-        return 7
+        # 額外加分
+        if promotions >= 3:
+            score += 5  # 持續晉升獎勵
+        if demotions == 0:
+            score += 3  # 無降級獎勵
+        
+        return min(score, 25)  # 上限 25 分
     
     def calculate_special_bonus(self, 
                                 education: List[Dict],
@@ -220,7 +253,8 @@ class TalentGrader:
                                 skills: List[str],
                                 candidate_data: Dict) -> float:
         """
-        計算特殊加分 (10%)
+        計算特殊加分 (5%) - 方案 A
+        語言能力 + 軟實力 + 成就
         
         Args:
             education: 教育背景
@@ -229,53 +263,40 @@ class TalentGrader:
             candidate_data: 候選人完整資料
             
         Returns:
-            0-10 分
+            0-5 分
         """
         bonus = 0
         
-        # 1. 名校畢業 (+3)
-        prestigious_schools = [
-            '台灣大學', '清華大學', '交通大學', '成功大學', '政治大學',
-            'Harvard', 'Stanford', 'MIT', 'Cambridge', 'Oxford'
+        # 1. 語言能力 (+2)
+        language_keywords = [
+            '英文', 'english', '雙語', 'bilingual', 'trilingual',
+            'toeic', 'ielts', 'toefl', 'celpip'
         ]
-        for edu in education:
-            school = edu.get('school', '')
-            if any(p in school for p in prestigious_schools):
-                bonus += 3
-                break
+        skills_text = ' '.join(skills).lower() if skills else ''
+        notes = candidate_data.get('notes', '').lower()
+        combined = skills_text + ' ' + notes
         
-        # 2. 大廠經驗 (+3)
-        big_companies = [
-            'Google', 'Microsoft', 'Apple', 'Amazon', 'Meta', 'Tesla',
-            'TSMC', '台積電', 'MediaTek', '聯發科', 'HTC', 'ASUS', '華碩'
-        ]
-        for job in work_history:
-            company = job.get('company', '')
-            if any(big in company for big in big_companies):
-                bonus += 3
-                break
-        
-        # 3. 領域專家 (+2) - 超過 5 年同領域經驗
-        if len(work_history) >= 3:
-            # 簡化判斷：假設同領域
+        if any(kw in combined for kw in language_keywords):
             bonus += 2
         
-        # 4. 開源貢獻 (+2) - GitHub stars > 100
-        github_url = candidate_data.get('github_url', '')
-        if github_url and 'github.com' in github_url:
+        # 2. 軟實力 (+2)
+        soft_skill_keywords = [
+            '溝通', 'communication', '領導', 'leadership',
+            '團隊合作', 'teamwork', '問題解決', 'problem solving',
+            '批判性思維', 'critical thinking'
+        ]
+        if any(kw in combined for kw in soft_skill_keywords):
             bonus += 2
         
-        # 5. 技術社群活躍 (+1)
-        linkedin_url = candidate_data.get('linkedin_url', '')
-        if linkedin_url and 'linkedin.com' in linkedin_url:
+        # 3. 特殊成就 (+1)
+        achievement_keywords = [
+            '獲獎', 'award', '專利', 'patent', '出版', 'publication',
+            '演講', 'speaker', 'conference'
+        ]
+        if any(kw in combined for kw in achievement_keywords):
             bonus += 1
         
-        # 6. 多語能力 (+1)
-        languages = candidate_data.get('languages', [])
-        if len(languages) >= 2:
-            bonus += 1
-        
-        return min(bonus, 10)  # 上限 10 分
+        return min(bonus, 5)  # 上限 5 分
     
     def grade_candidate(self, candidate_data: Dict) -> Dict[str, Any]:
         """
