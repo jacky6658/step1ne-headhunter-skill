@@ -103,6 +103,13 @@ step1ne-headhunter-skill/
 - [CRON 定時任務規劃](docs/CRON-BD定時任務規劃.md)
 - [教學：如何教 Bot 執行定時 BD 爬蟲](docs/教學-如何教Bot執行定時BD爬蟲.md)
 
+### AI 整合（內部使用）
+- [**OpenClaw AI 連接指南**](docs/OPENCLAW-INTEGRATION.md) ⭐ NEW
+  - 如何讓 AI 助理（YuQi、Phoebe）連接 Step1ne 系統
+  - API 端點說明、認證方式、使用範例
+  - 人才評級系統整合
+  - 完整的故障排除指南
+
 ---
 
 ## 🎯 使用場景
