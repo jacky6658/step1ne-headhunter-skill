@@ -1,0 +1,25 @@
+{
+  "id": "C001",
+  "name": "張大明",
+  "skills": "Revit、Navisworks、BIM協調、數位孿生、Python、專案管理",
+  "years": 5.5,
+  "jobChanges": 2,
+  "education": "土木工程學士",
+  "workHistory": [
+    {
+      "company": "某建設公司",
+      "position": "資深BIM工程師",
+      "start": "2021-01",
+      "end": "2026-02",
+      "duration_months": 61
+    },
+    {
+      "company": "建築設計公司",
+      "position": "BIM工程師",
+      "start": "2018-06",
+      "end": "2020-12",
+      "duration_months": 30
+    }
+  ],
+  "notes": "技術導向，追求專業成長，對數位孿生有研究興趣"
+}
