@@ -145,6 +145,17 @@ def format_work_experience(work_history):
     Returns:
         格式化後的工作經歷字串
     """
+    # 如果 work_history 是字串，轉換為簡單陣列格式
+    if isinstance(work_history, str):
+        work_history = [{
+            'company': '前公司',
+            'title': work_history,
+            'startDate': '',
+            'endDate': '現在',
+            'duties': [work_history],
+            'achievements': []
+        }]
+    
     formatted = []
     
     for job in work_history:
@@ -237,7 +248,15 @@ def generate_anonymous_resume(candidate_data, job_data, consultant_name='Jacky C
     
     # 基本資訊
     resume = resume.replace('{{RECOMMENDATION_DATE}}', datetime.now().strftime('%Y-%m-%d'))
-    resume = resume.replace('{{CLIENT_COMPANY}}', job_data.get('company', ''))
+    
+    # 處理 company（可能是字串或物件）
+    company = job_data.get('company', '')
+    if isinstance(company, dict):
+        company_name = company.get('name', '目標公司')
+    else:
+        company_name = company or '目標公司'
+    resume = resume.replace('{{CLIENT_COMPANY}}', company_name)
+    
     resume = resume.replace('{{JOB_TITLE}}', job_data.get('title', ''))
     resume = resume.replace('{{CANDIDATE_CODE}}', candidate_code)
     
