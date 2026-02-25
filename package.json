@@ -1,0 +1,14 @@
+{
+  "name": "step1ne-backend",
+  "version": "1.0.0",
+  "description": "Step1ne AI Recruitment System Backend",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node server/server.js",
+    "init-db": "node server/init-db.js"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
