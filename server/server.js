@@ -16,6 +16,12 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+
+// 環境變數相容：支援 DATABASE_URL 或 POSTGRES_URI（Zeabur 自動生成）
+if (!process.env.DATABASE_URL && process.env.POSTGRES_URI) {
+  process.env.DATABASE_URL = process.env.POSTGRES_URI;
+}
+
 const sqlService = require('./sqlService');
 const candidatesRouter = require('./routes-candidates');
 
