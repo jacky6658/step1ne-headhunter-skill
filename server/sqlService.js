@@ -186,11 +186,10 @@ async function updateProgressTracking(candidateId, trackingData) {
 async function getPendingSyncToSheets() {
   try {
     const query = `
-      SELECT DISTINCT candidate_id, new_status
+      SELECT DISTINCT ON (candidate_id) candidate_id, new_status, sync_timestamp
       FROM google_sheets_sync_log
       WHERE synced_to_sheets = FALSE
-      AND sync_timestamp > NOW() - INTERVAL '1 hour'
-      ORDER BY sync_timestamp DESC
+      ORDER BY candidate_id, sync_timestamp DESC
       LIMIT 50
     `;
 
